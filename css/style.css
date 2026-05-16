@@ -1890,7 +1890,10 @@ em, .italic {
    20. CTA BAND
    -----------------------------------------------------------*/
 .cta-band {
-  background: var(--terracotta);
+  background-color: var(--cipolla-deep);   /* fallback se Tropea.webp non carica */
+  background-image: url('../img/Tropea.webp');
+  background-size: cover;
+  background-position: center;
   color: var(--avorio);
   padding: clamp(5rem, 10vw, 8rem) 0;
   text-align: center;
@@ -1901,12 +1904,8 @@ em, .italic {
 .cta-band::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(245, 198, 55, 0.18) 0%, transparent 60%);
-  transform: translate(-50%, -50%);
+  inset: 0;
+  background: rgba(17, 63, 40, 0.72);   /* overlay scuro per leggibilità */
   pointer-events: none;
 }
 
@@ -1918,7 +1917,7 @@ em, .italic {
 }
 
 .cta-band h2 em {
-  color: var(--cipolla-deep);
+  color: var(--oro);
   font-style: italic;
   font-weight: 300;
 }
@@ -2343,6 +2342,16 @@ em, .italic {
   color: rgba(244, 236, 221, 0.82);
   max-width: 62ch;
   margin-inline: auto;
+}
+
+.seme-cycle__img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: var(--s-10) auto 0;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--r-md);
 }
 
 .seme-cycle__deco {
