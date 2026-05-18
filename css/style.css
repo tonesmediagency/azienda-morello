@@ -1119,59 +1119,72 @@ em, .italic {
   gap: var(--s-6);
 }
 
+/* Product card — split layout: foto in alto, testo su sfondo solido in basso */
 .product {
-  position: relative;
-  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
   border-radius: var(--r-md);
   overflow: hidden;
-  isolation: isolate;
-  cursor: pointer;
+  background: var(--avorio);
+  box-shadow: 0 2px 20px rgba(26, 15, 11, 0.07);
+  transition: transform var(--t-med) var(--ease),
+              box-shadow var(--t-med) var(--ease);
+  text-decoration: none;
+  color: inherit;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 44px rgba(26, 15, 11, 0.14);
+}
+
+/* Wrapper immagine — isola l'overflow del zoom */
+.product__media {
+  overflow: hidden;
+  flex-shrink: 0;
   background: var(--cipolla-deep);
 }
 
 .product__img {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   transition: transform 1.2s var(--ease);
-  z-index: 0;
 }
 
 .product:hover .product__img {
   transform: scale(1.06);
 }
 
-.product__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(17, 63, 40, 0) 0%,
-    rgba(17, 63, 40, 0.1) 40%,
-    rgba(17, 63, 40, 0.85) 80%,
-    rgba(26, 15, 11, 0.95) 100%);
-  z-index: 1;
-  transition: opacity var(--t-med) var(--ease);
-}
-
-.product:hover .product__overlay {
-  background: linear-gradient(180deg,
-    rgba(17, 63, 40, 0) 0%,
-    rgba(17, 63, 40, 0.2) 30%,
-    rgba(17, 63, 40, 0.9) 70%,
-    rgba(26, 15, 11, 0.97) 100%);
-}
-
+/* Blocco testo su sfondo solido */
 .product__body {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  padding: clamp(1.75rem, 3.5vw, 3rem);
-  z-index: 2;
-  color: var(--crema);
-  transform: translateY(0);
-  transition: transform var(--t-med) var(--ease);
+  padding: var(--s-8) var(--s-7) var(--s-9);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--avorio);
+  border-top: 1px solid rgba(26, 15, 11, 0.06);
+}
+
+/* Badge — ora inline nel body, non più assoluto */
+.product__badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: var(--s-5);
+  background: var(--oro);
+  color: var(--cipolla-deep);
+  padding: var(--s-2) var(--s-4);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.product__badge--leaf {
+  background: var(--oliva-light);
+  color: var(--avorio);
 }
 
 .product__kicker {
@@ -1184,13 +1197,13 @@ em, .italic {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--oro);
+  color: var(--cipolla);
 }
 
 .product__kicker .dash {
   width: 24px;
   height: 1px;
-  background: currentColor;
+  background: var(--cipolla);
 }
 
 .product__title {
@@ -1199,22 +1212,22 @@ em, .italic {
   font-weight: 400;
   line-height: 0.98;
   letter-spacing: -0.025em;
-  color: var(--crema);
+  color: var(--cipolla-deep);
   margin-bottom: var(--s-5);
 }
 
 .product__title em {
-  color: var(--oro);
+  color: var(--terracotta);
   font-style: italic;
   font-weight: 300;
 }
 
 .product__desc {
-  color: rgba(244, 236, 221, 0.85);
+  color: var(--grafite);
   font-size: 0.9375rem;
   line-height: 1.6;
   max-width: 36ch;
-  margin-bottom: var(--s-6);
+  margin-bottom: var(--s-8);
 }
 
 .product__cta {
@@ -1225,38 +1238,20 @@ em, .italic {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--crema);
+  color: var(--cipolla-deep);
   padding-bottom: 4px;
-  border-bottom: 1.5px solid rgba(244, 236, 221, 0.4);
-  transition: gap var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+  border-bottom: 1.5px solid rgba(26, 15, 11, 0.22);
+  transition: gap var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .product:hover .product__cta {
   gap: var(--s-5);
-  border-bottom-color: var(--oro);
-  color: var(--oro);
-}
-
-/* IGP badge floating */
-.product__badge {
-  position: absolute;
-  top: var(--s-5);
-  right: var(--s-5);
-  z-index: 3;
-  background: var(--oro);
-  color: var(--cipolla-deep);
-  padding: var(--s-2) var(--s-4);
-  border-radius: 999px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  box-shadow: var(--shadow-sm);
-}
-
-.product__badge--leaf {
-  background: var(--oliva);
-  color: var(--crema);
+  border-bottom-color: var(--cipolla);
+  color: var(--cipolla);
 }
 
 /* -----------------------------------------------------------
@@ -1934,6 +1929,12 @@ em, .italic {
   gap: var(--s-4);
   justify-content: center;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .cta-band {
+    background-image: url('../img/CTA-CELL.webp');
+  }
 }
 
 .cta-band--dark {

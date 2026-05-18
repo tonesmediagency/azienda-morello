@@ -122,13 +122,19 @@
 <section class="hero hero--photo" aria-label="Presentazione">
   <div class="hero__inner">
 
-    <img
-      class="hero__photo"
-      src="img/campo.webp"
-      alt="Campi coltivati a San Costantino di Briatico — Azienda Agricola Fratelli Morello"
-      loading="eager"
-      fetchpriority="high"
-    />
+    <picture>
+      <source
+        media="(max-width: 768px)"
+        srcset="img/TROPEA-MOBILE.webp"
+      />
+      <img
+        class="hero__photo"
+        src="img/campo.webp"
+        alt="Campi coltivati a San Costantino di Briatico — Azienda Agricola Fratelli Morello"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </picture>
     <div class="hero__photo-grad" aria-hidden="true"></div>
 
     <div class="hero__content">
@@ -272,13 +278,14 @@
     <div class="products stagger">
 
       <a href="prodotti.html#cipolla" class="product">
-        <span class="product__badge">IGP Certificata</span>
-        <img class="product__img"
-          src="img/cipolle-casse.webp"
-          alt="Cipolla Rossa di Tropea IGP confezionata — Azienda Morello"
-          loading="lazy" />
-        <div class="product__overlay" aria-hidden="true"></div>
+        <div class="product__media">
+          <img class="product__img"
+            src="img/cipolle-casse.webp"
+            alt="Cipolla Rossa di Tropea IGP confezionata — Azienda Morello"
+            loading="lazy" />
+        </div>
         <div class="product__body">
+          <span class="product__badge">IGP Certificata</span>
           <span class="product__kicker">
             <span class="dash"></span>
             Prodotto principale
@@ -298,13 +305,14 @@
       </a>
 
       <a href="prodotti.html#origano" class="product">
-        <span class="product__badge product__badge--leaf">Calabria</span>
-        <img class="product__img"
-          src="img/origano.webp"
-          alt="Origano calabrese — Azienda Agricola Morello"
-          loading="lazy" />
-        <div class="product__overlay" aria-hidden="true"></div>
+        <div class="product__media">
+          <img class="product__img"
+            src="img/origano.webp"
+            alt="Origano calabrese — Azienda Agricola Morello"
+            loading="lazy" />
+        </div>
         <div class="product__body">
+          <span class="product__badge product__badge--leaf">Calabria</span>
           <span class="product__kicker">
             <span class="dash"></span>
             Prodotto secondario
