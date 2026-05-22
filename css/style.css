@@ -724,6 +724,8 @@ em, .italic {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  text-align: left;
   position: relative;
   z-index: 2;
 }
@@ -750,6 +752,10 @@ em, .italic {
 }
 
 .hero__title {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  font-variation-settings: 'opsz' 144;
+  letter-spacing: -0.04em;
   font-size: clamp(2.25rem, 4.5vw, 3.75rem);
   line-height: 1.1;
   text-wrap: balance;
@@ -829,7 +835,6 @@ em, .italic {
   background-size: cover;
   background-position: center;
   background-blend-mode: multiply, normal, normal;
-  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
 }
 
 .hero__visual::after {
@@ -840,7 +845,6 @@ em, .italic {
     rgba(17, 63, 40, 0.3) 0%,
     rgba(17, 63, 40, 0) 60%,
     rgba(199, 86, 62, 0.25) 100%);
-  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
   pointer-events: none;
 }
 
@@ -1059,14 +1063,13 @@ em, .italic {
 }
 
 .split__media--blob {
-  border-radius: var(--r-blob);
+  border-radius: var(--r-md);
   aspect-ratio: 1 / 1;
   box-shadow: 0 30px 80px rgba(17, 63, 40, 0.25);
-  transition: border-radius 12s var(--ease) infinite;
 }
 
 .split__media--leaf {
-  border-radius: var(--r-leaf);
+  border-radius: var(--r-md);
   aspect-ratio: 4 / 5;
 }
 
@@ -1480,7 +1483,7 @@ em, .italic {
 
 .story__media img:nth-child(1) {
   aspect-ratio: 4 / 5;
-  border-radius: 200px 24px 200px 24px;
+  border-radius: var(--r-md);
 }
 
 .story__media img:nth-child(2) {
@@ -2216,6 +2219,29 @@ em, .italic {
   .nav { display: flex; }
   .burger { display: none; }
   .drawer { display: none; }
+
+  /* Hero desktop — layout centrato, titolo dominante */
+  .hero--photo .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero--photo .hero__content {
+    max-width: 1100px;
+    margin-inline: auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: clamp(4rem, 7vw, 7rem);
+    line-height: 1.05;
+    max-width: 100%;
+  }
+
+  .hero--photo .hero__lead {
+    max-width: 680px;
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  }
 }
 
 /* -----------------------------------------------------------
